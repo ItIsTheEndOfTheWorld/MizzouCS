@@ -10,7 +10,7 @@ void returnArraySize(FILE *fptr, int* length);
 int main(void)
 {
 	//open file. check to see if file exists
-	FILE *file = fopen("idunno.txt", "r");
+	FILE *file = fopen("samplefilepl3.txt", "r");
 	if (file == NULL)
 	{
 		printf("\n%s", "Error: file does not exist\n");
@@ -31,7 +31,7 @@ int main(void)
 	
 	//loop through each element in the array and print it.
 	//(printed here and in the readFloat function to make sure the values are
-	//passed back the way they should be.
+	//passed back the way they should be.)
 	printf("\nLength: %d", *length);
 	int i = 0;
 	for (; i < *length; i++)
