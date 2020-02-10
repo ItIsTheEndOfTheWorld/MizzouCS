@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//uh, slides 33-3something are decent resources
-//okay so this uses void pointers. void pointers hold addresses of any type and
-//can be typecasted to any type
+//okay so this uses void pointers. void pointers hold addresses of any type and can be typecasted to any type
 
+//prototypes
 void* createArray(int size, int dataTypeSize);
 void freeArray(void** array);
 
 int main(void)
 {
+	//try different types of data. each array will have a length of 5.
 	int dataTypeSize = sizeof(double);
 	int dataTypeSize2 = sizeof(int);
 	int dataTypeSize3 = sizeof(char);
 	int dataTypeSize4 = sizeof(float);
 	int size = 5;
 	
+	//create arrays of appropriate types.
+	//(a void pointer can be cast to any type of data.)
 	double* arr = createArray(size, dataTypeSize);
 	int* arr2 = createArray(size, dataTypeSize2);
 	char* arr3 = createArray(size, dataTypeSize3);
@@ -69,6 +71,7 @@ int main(void)
 		printf("%d: %f\n", i, arr4[i]);
 	}
 	
+	//make void pointers of the arrays and pass the pointers to freeArray to free the malloc'ed data
 	void* ptr = arr;
 	void* ptr2 = arr2;
 	void* ptr3 = arr3;
@@ -78,14 +81,19 @@ int main(void)
 	freeArray(&ptr3);
 	freeArray(&ptr4);
 	
+	//success!
 	return 0;
 }
 
+//create array of any type. data size should be specified beforehand.
+//malloc only needs an integer that specifies how much data should be allotted. specifying that when the function is called
+//allows it to be of any type.
 void* createArray(int size, int dataTypeSize)
 {
 	return malloc(size*dataTypeSize);
 }
 
+//free the malloc'ed memory. print success message - it makes me feel better to have a visual confirmation of "yes, this did the thing"
 void freeArray(void** array)
 {
 	free(array);
